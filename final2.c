@@ -8,7 +8,8 @@
 // If iMode = 0, blocking is enabled;   
 // If iMode != 0, non-blocking mode is enabled.
 //ioctl(sockfd, FIONBIO, &iMode);  
-
+// read and wrie are non-blocking so, 
+//use poll or select to make code beter ,it workd because its in a while loop.
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -317,7 +318,7 @@ void *server()
                 if(buffer_s < 0) error("ERROR writing to file_list");        
 		//			printf("came here\n");
 		//			fflush(stdout);
-					TCPserver(tag[2],ffsize(stt));
+					TCPserver(tag[2],ffsize(stt));// make it threaded
 
 			}
             if(!bcmp(tag[1],"UDP",3))
@@ -327,7 +328,7 @@ void *server()
                 if(buffer_s < 0) error("ERROR writing to file_list");        
         //          printf("came here\n");
         //          fflush(stdout);
-                    UDPserver(tag[2],ffsize(stt));
+                    UDPserver(tag[2],ffsize(stt));// make it threaded
 
             }        
 		}
@@ -449,7 +450,7 @@ void *client()
 			siz=atoi(arr);
 		//	printf("File: %s %d\n",filen,siz);
 			bzero(output,1024);
-			TCPclient(filen,siz);
+			TCPclient(filen,siz); // make it threaded
 		
 		}
         else if(!bcmp("UDP",arr,3))
@@ -458,7 +459,7 @@ void *client()
             siz=atoi(arr);
         //  printf("File: %s %d\n",filen,siz);
             bzero(output,1024);
-            UDPclient(filen,siz);
+            UDPclient(filen,siz); // make it threaded
         
         }
 		bzero(output,1024);
