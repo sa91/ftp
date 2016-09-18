@@ -78,6 +78,7 @@ void md5calc(char *filename)
 	for(i = 0; i < MD5_DIGEST_LENGTH; i++) sprintf(md5+(2*i),"%02x", c[i]);
 	fclose (inFile);
 }
+//setting up server is not good use sockets instead ,opening new connection with the client is better.(TCP)
 void TCPserver(char *filename,int size)
 {
 	//printf("start\n");
@@ -128,7 +129,8 @@ void TCPserver(char *filename,int size)
 	close(sockfd); 
 
 }
-void UDPserver(char* filename,int size)
+
+void UDPserver(char* filename,int size)   
 {
     int udpSocket, nBytes;
     struct sockaddr_in serverAddr, clientAddr;
@@ -485,7 +487,7 @@ void *client()
 // this to set non-blocking socket
 // Note normal sockets are not Nonblocking by nature but ,
 // they return as soon as there is anything to read  which leads to improper outputs,
-// better to have 1st value as size of message than use non-blocking reads till you don't get the disired output then only output.q
+// better to have 1st value as size of message than use non-blocking reads till you don't get the disired output then only output.
 int main()
 {
 
