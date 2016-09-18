@@ -4,8 +4,8 @@
 
 //gcc -lssl -lcrypto -lpthread -g -Wall -o file final.cpp
 
-//  You can make read synchronous by this. (StackOverflow)
-//use poll or select to make code beter ,it workd because its in a while loop.
+
+//use poll or select to make code beter .
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -499,6 +499,7 @@ int main()
 }
 
 // More Notes::
+//  You can make read synchronous by this. (StackOverflow)
 // Set the socket I/O mode: In this case FIONBIO  
 // enables or disables the blocking mode for the   
 // socket based on the numerical value of iMode.  
