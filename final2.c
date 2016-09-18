@@ -1,14 +1,10 @@
+//kyokai no kanata (Satyam Pandey)//
+//The given code has various shortcoming , I ahve pointed out a few .
+//Code works buts still it needs improvements , I will makes changes as soon as possible in the code to make it better.
+
 //gcc -lssl -lcrypto -lpthread -g -Wall -o file final.cpp
 
-
 //  You can make read synchronous by this. (StackOverflow)
-// Set the socket I/O mode: In this case FIONBIO  
-// enables or disables the blocking mode for the   
-// socket based on the numerical value of iMode.  
-// If iMode = 0, blocking is enabled;   
-// If iMode != 0, non-blocking mode is enabled.
-//ioctl(sockfd, FIONBIO, &iMode);  
-// read and wrie are non-blocking so, 
 //use poll or select to make code beter ,it workd because its in a while loop.
 #include <stdio.h>
 #include <stdlib.h>
@@ -501,3 +497,12 @@ int main()
 	pthread_join(grp2,NULL);
 	return 0;
 }
+
+// More Notes::
+// Set the socket I/O mode: In this case FIONBIO  
+// enables or disables the blocking mode for the   
+// socket based on the numerical value of iMode.  
+// If iMode = 0, blocking is enabled;   
+// If iMode != 0, non-blocking mode is enabled.
+//ioctl(sockfd, FIONBIO, &iMode);  
+// read and wrie are non-blocking so, 
