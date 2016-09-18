@@ -478,6 +478,14 @@ void *client()
 	}
 	close(sockfd);
 }
+//Non-blocking sockets are best use,
+//int x;
+//x=fcntl(socket ,F_GETFL, 0);
+//fcntl(socket, F_SETFL, x | O_NONBLOCK);
+// this to set non-blocking socket
+// Note normal sockets are not Nonblocking by nature but ,
+// they return as soon as there is anything to read  which leads to improper outputs,
+// better to have 1st value as size of message than use non-blocking reads till you don't get the disired output then only output.q
 int main()
 {
 
